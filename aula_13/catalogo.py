@@ -71,6 +71,22 @@ class Catalogo:
         print(f'Reprodução da música {self.musica_atual.nome} pausada.')
         self.musica_atual = None
         return True
+    def favoritar_musica(self, musica):
+        if musica not in self.musicas or musica in self.favoritos:
+            print('A música não está cadastrada no catálogo.')
+            return False
+        self.favoritos.append(musica)
+        return True
+    
+    def desfavoritar_musica(self, musica):
+        if musica not in self.favoritos:
+            print('A música não está na lista de favoritos.')
+            return False
+        self.favoritos.remove(musica)
+        return True
+    def listar_favoritos(self):
+        for musica in self.favoritos:
+            print(musica)
         ##################################################################
 
     def listar_musicas(self):
